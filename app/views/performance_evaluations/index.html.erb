@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Performance Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Due date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @performance_evaluations.each do |performance_evaluation| %>
+      <tr>
+        <td><%= performance_evaluation.title %></td>
+        <td><%= performance_evaluation.due_date %></td>
+        <td><%= link_to 'Show', performance_evaluation %></td>
+        <td><%= link_to 'Edit', edit_performance_evaluation_path(performance_evaluation) %></td>
+        <td><%= link_to 'Destroy', performance_evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Performance Evaluation', new_performance_evaluation_path %>

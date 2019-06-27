@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>:</strong>
+  <%= @performance_evaluation.title %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @performance_evaluation.due_date %>
+</p>
+
+<% @performance_evaluation.performance_commitments.each do |c| %>
+  <%= c.commitment  %>
+  <%= link_to 'ver', performance_commitment_comments_path(c.id) %>
+<% end %>
+
+<%= link_to 'Edit', edit_performance_evaluation_path(@performance_evaluation) %> |
+<%= link_to 'Back', performance_evaluations_path %>

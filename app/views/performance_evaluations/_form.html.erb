@@ -1,0 +1,41 @@
+<%= form_for @performance_evaluation do |form| %>
+  <% if performance_evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(performance_evaluation.errors.count, "error") %> prohibited this performance_evaluation from being saved:</h2>
+
+      <ul>
+      <% performance_evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :due_date %>
+    <%= form.date_select :due_date %>
+  </div>
+
+<h3>commitments</h3>
+<div id="commitments">
+
+<%= form.fields_for :performance_commitments do |commitment| %>
+ 
+ <%= render 'commitment_fields', f: commitment %>
+<% end %>
+</div>
+
+<div class="links">
+<%= link_to_add_association 'add', form, :performance_commitments, partial: 'commitment_fields'  %>
+</div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
